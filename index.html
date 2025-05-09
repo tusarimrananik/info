@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Account Information</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .number-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .number-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .number-title {
+            color: #e84393;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ffeaa7;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-name {
+            font-weight: 500;
+            color: #2d3436;
+            width: 100px;
+        }
+
+        .value {
+            color: #636e72;
+            margin-right: 1rem;
+            flex-grow: 1;
+        }
+
+        .copy-btn {
+            background-color: #00b894;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #00a383;
+        }
+
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0984e3;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Account PINs</h1>
+        
+        <!-- Number 1 -->
+        <div class="number-card">
+            <h2 class="number-title">Number 1: 01234567890</h2>
+            <div class="info-row">
+                <span class="service-name">Bkash PIN:</span>
+                <span class="value">123456</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+            <div class="info-row">
+                <span class="service-name">Nagad PIN:</span>
+                <span class="value">654321</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+            <div class="info-row">
+                <span class="service-name">Rocket PIN:</span>
+                <span class="value">987654</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- Number 2 -->
+        <div class="number-card">
+            <h2 class="number-title">Number 2: 01765432109</h2>
+            <div class="info-row">
+                <span class="service-name">Bkash PIN:</span>
+                <span class="value">112233</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+            <div class="info-row">
+                <span class="service-name">Nagad PIN:</span>
+                <span class="value">445566</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+            <div class="info-row">
+                <span class="service-name">Rocket PIN:</span>
+                <span class="value">778899</span>
+                <button class="copy-btn" onclick="copyText(this)">Copy</button>
+            </div>
+        </div>
+
+        <!-- Add more numbers as needed -->
+    </div>
+
+    <div class="alert" id="alert">Copied to clipboard! 📋</div>
+
+    <script>
+        function copyText(button) {
+            const value = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(value).then(() => {
+                showAlert();
+            });
+        }
+
+        function showAlert() {
+            const alert = document.getElementById('alert');
+            alert.style.display = 'block';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
